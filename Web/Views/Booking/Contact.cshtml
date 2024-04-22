@@ -1,0 +1,72 @@
+@model Web.ViewModels.BookingBookViewModel
+
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<div class="text-center">
+    <h1>Vul je contact gegevens in</h1>
+    <form asp-controller="Booking" asp-action="ContactPost">
+
+        <input type="hidden" asp-for="SelectedAnimals"/>
+        <input type="hidden" asp-for="Date"/>
+
+        <div class="form-group">
+            <label asp-for="Customer.Name" class="control-label"></label>
+            <input asp-for="Customer.Name" class="form-control"/>
+            <span asp-validation-for="Customer.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Customer.Email" class="control-label"></label>
+            <input asp-for="Customer.Email" class="form-control"/>
+            <span asp-validation-for="Customer.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Customer.PhoneNumber" class="control-label"></label>
+            <input asp-for="Customer.PhoneNumber" class="form-control"/>
+            <span asp-validation-for="Customer.PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Customer.Street" class="control-label"></label>
+            <input asp-for="Customer.Street" class="form-control"/>
+            <span asp-validation-for="Customer.Street" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Customer.HouseNumber" class="control-label"></label>
+            <input asp-for="Customer.HouseNumber" class="form-control"/>
+            <span asp-validation-for="Customer.HouseNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Customer.City" class="control-label"></label>
+            <input asp-for="Customer.City" class="form-control"/>
+            <span asp-validation-for="Customer.City" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Customer.ZipCode" class="control-label"></label>
+            <input asp-for="Customer.ZipCode" class="form-control"/>
+            <span asp-validation-for="Customer.ZipCode" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Customer.Country" class="control-label"></label>
+            <input asp-for="Customer.Country" class="form-control"/>
+            <span asp-validation-for="Customer.Country" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Bestellen" class="btn btn-primary"/>
+        </div>
+
+
+    </form>
+</div>
+
+<div>
+    <h1>Dieren:</h1>
+    @if (Model.Animals != null)
+    {
+        foreach (var animal in Model.Animals)
+        {
+            <p>@animal.Name</p>
+        }
+    }
+</div>

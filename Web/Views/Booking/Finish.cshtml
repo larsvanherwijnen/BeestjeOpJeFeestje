@@ -1,0 +1,43 @@
+@model Web.ViewModels.BookingBookViewModel
+
+@{
+    ViewData["Title"] = "Finish";
+}
+
+<div>
+    <p>Contact gegevens:</p>
+    <p>Naam: @Model.Customer.Name</p>
+    <p>Email: @Model.Customer.Email</p>
+    <p>Telefoonnummer: @Model.Customer.PhoneNumber</p>
+    <p>Straat: @Model.Customer.Street</p>
+    <p>Huisnummer: @Model.Customer.HouseNumber</p>
+    <p>Stad: @Model.Customer.City</p>
+    <p>Postcode: @Model.Customer.ZipCode</p>
+    <p>Land: @Model.Customer.Country</p>
+</div>
+
+<div>
+    <p>Dieren - korting:</p>
+    @foreach (var item in Model.Animals)
+    {
+        <p>@item.Name - @item.Discount</p>
+    }
+    
+    <p><strong>Totaal:</strong> @Model.TotalPrice</p>
+</div>
+
+<form asp-action="FinishPost" asp-controller="Booking">
+            <input type="hidden" asp-for="SelectedAnimals"/>
+            <input type="hidden" asp-for="Date"/>
+            <input type="hidden" asp-for="Customer.Name"/>
+            <input type="hidden" asp-for="Customer.Email"/>
+            <input type="hidden" asp-for="Customer.PhoneNumber"/>
+            <input type="hidden" asp-for="Customer.Street"/>
+            <input type="hidden" asp-for="Customer.HouseNumber"/>
+            <input type="hidden" asp-for="Customer.City"/>
+            <input type="hidden" asp-for="Customer.ZipCode"/>
+            <input type="hidden" asp-for="Customer.Country"/>
+            <input type="hidden" asp-for="CustomerId"/>
+            <input type="hidden" asp-for="TotalPrice"/>
+            <input type="submit" value="Bestellen" class="btn btn-primary"/>
+</form>

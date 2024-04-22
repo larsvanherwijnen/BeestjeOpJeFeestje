@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Web.ViewModels.BookingViewModel>
+
+@{
+    ViewData["Title"] = "Bookingen";
+}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Animals)
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @foreach(var animal in item.Animals)
+                {
+                    <p>@animal.Name</p>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

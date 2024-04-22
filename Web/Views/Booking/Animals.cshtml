@@ -1,0 +1,44 @@
+@using Web.ViewModels
+@model Web.ViewModels.BookingBookViewModel
+
+@{
+    ViewData["Title"] = "Animals";
+}
+
+<h1>Animals</h1>
+
+@if (ViewBag.model != null)
+{
+    @foreach (var item in ViewBag.model)
+    {
+        <p>@item</p>
+    }
+}
+
+
+
+<form asp-controller="Booking" asp-action="AnimalsPost">
+
+@foreach (AnimalViewModel animals in Model.Animals)
+{
+    <input type="checkbox"  value="@animals.Id" name="Animals" onclick="countSelectedCheckboxes()"  /> @animals.Name <br />
+}
+<div>
+    <input type="submit" value="Next Animals" class="btn btn-primary"/>
+</div>
+                <input type="hidden" id="selectedAnimals" name="selectedAnimals"/>
+
+
+<input hidden="hidden" asp-for="Date" />
+</form>
+
+
+<script>
+ function countSelectedCheckboxes() {
+        let selectedCheckboxes = document.querySelectorAll("input[type=checkbox]:checked");
+        
+        const selectedValues = Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
+        document.getElementById('selectedAnimals').value = selectedValues.join(',');
+}
+</script>
+

@@ -1,0 +1,13 @@
+﻿@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Boek een beestje</h1>
+    <p class="lead">Welkom bij Boek een beestje, de beste feest-dierenverhuur van Nederland!</p>
+</div>
+
+<div class="text-center">
+    <a asp-action="Start" asp-controller="Booking" class="btn btn-primary">Begin met boeken</a>
+</div>

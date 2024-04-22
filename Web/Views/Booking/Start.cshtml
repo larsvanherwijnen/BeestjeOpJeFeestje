@@ -1,0 +1,20 @@
+﻿@model Web.ViewModels.BookingBookViewModel
+
+@{
+    ViewData["Title"] = "Start";
+}
+
+<form asp-action="Start">
+    <input hidden="hidden" asp-for="Animals"/>
+    <input hidden="hidden" asp-for="Customer"/>
+    <input hidden="hidden" asp-for="Id"/>
+    <div class="form-group">
+        <label asp-for="Date" class="control-label"></label>
+        <input type="date" asp-for="Date" class="form-control" />
+        <span asp-validation-for="Date" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <input type="submit" value="Next Animals" class="btn btn-primary"/>
+    </div>
+</form>
